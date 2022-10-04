@@ -1,8 +1,8 @@
 package dev.skaringa.fizzbuzz.service;
 
-import dev.skaringa.fizzbuzz.model.Sequence;
-import dev.skaringa.fizzbuzz.model.SequenceDataEntry;
+import java.io.Serializable;
+import java.util.List;
 
 public interface FizzBuzzSequenceGenerator {
-    Sequence<SequenceDataEntry> generate(int length);
+    List<Serializable> generate(int length);
 }
