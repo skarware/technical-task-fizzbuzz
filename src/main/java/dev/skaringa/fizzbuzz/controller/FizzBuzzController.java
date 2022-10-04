@@ -6,8 +6,13 @@ import dev.skaringa.fizzbuzz.service.FizzBuzzService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
+@Validated
 @RestController
 @CrossOrigin("*")
 @Api(tags = "FizzBuzz Sequence Controller")
@@ -18,7 +23,7 @@ public class FizzBuzzController {
 
     @GetMapping("{length}")
     public Sequence<SequenceDataEntry> getFizzBuzz(
-            @ApiParam(value = "Length", example = "100") @PathVariable int length) {
+            @ApiParam(value = "Length", example = "100") @PathVariable @Min(1) @Max(10000) int length) {
         return fizzBuzzService.getSequence(length);
     }
 }
