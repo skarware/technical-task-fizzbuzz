@@ -34,16 +34,17 @@ safer because uses fewer assignments to variables so less prone to side effects.
 Both generators use `FizzBuzzWordResolver` to get Fizz-Buzz phrases for a number. Its modulo operations optimized.
 Thanks to compiler "Fizz" and "Buzz" static strings concatenation should be as fast as having single "FizzBuzz" phrase.
 
-`SimpleFizzBuzzSequenceGenerator` is `@Primary` and roughly 40% faster than streaming impl.
+Additionally, added Caching generator implementation. It acts as a wrapper and delegates to existing generators.
 
-Primary generator is configurable in `FizzBuzzSequenceGeneratorConfig` class.
+`SimpleFizzBuzzSequenceGenerator` is roughly 40% faster than streaming while caching versions faster up to n-folds times
+but initially can be slower when cache miss hit due capacity extension, depends on situation.
+
+`@Primary` generator is configurable in `FizzBuzzSequenceGeneratorConfig` class.
 
 ### Shortcomings
 
 After adding Generators which returns List of Serializable items I have doubt in need for different types
 of `SequenceDataEntry`. `Sequence.data` might also be of Serializable type.
-
-Caching generators would be nice (WIP)
 
 ## How to set up the application
 

@@ -1,5 +1,6 @@
 package dev.skaringa.fizzbuzz.configuration;
 
+import dev.skaringa.fizzbuzz.service.CachingFizzBuzzSequenceGenerator;
 import dev.skaringa.fizzbuzz.service.FizzBuzzSequenceGenerator;
 import dev.skaringa.fizzbuzz.service.SimpleFizzBuzzSequenceGenerator;
 import lombok.Getter;
@@ -16,7 +17,7 @@ import org.springframework.context.annotation.Profile;
 public class FizzBuzzSequenceGeneratorConfig {
     @Bean
     @Primary
-    public FizzBuzzSequenceGenerator simpleFizzBuzzSequenceGenerator() {
-        return new SimpleFizzBuzzSequenceGenerator();
+    public FizzBuzzSequenceGenerator cachingSimpleFizzBuzzSequenceGenerator() {
+        return new CachingFizzBuzzSequenceGenerator(new SimpleFizzBuzzSequenceGenerator());
     }
 }

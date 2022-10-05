@@ -5,6 +5,19 @@ import dev.skaringa.fizzbuzz.SpecBase
 class SimpleFizzBuzzSequenceGeneratorSpec extends SpecBase {
     private def simpleFizzBuzzSequenceGenerator = new SimpleFizzBuzzSequenceGenerator()
 
+    def "returns correct sequence when from and to numbers given"() {
+        given:
+        def fromNumber = 6
+        def toNumber = 15
+
+        when:
+        def result = simpleFizzBuzzSequenceGenerator.generate(fromNumber, toNumber)
+
+        then:
+        result.size() == 10
+        result == ["Fizz", 7, 8, "Fizz", "Buzz", 11, "Fizz", 13, 14, "FizzBuzz"]
+    }
+
     def "returns correct sequence when length of 5 given"() {
         given:
         def length = 5

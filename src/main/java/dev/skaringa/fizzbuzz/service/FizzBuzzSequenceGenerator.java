@@ -5,4 +5,6 @@ import java.util.List;
 
 public interface FizzBuzzSequenceGenerator {
     List<Serializable> generate(int length);
+
+    List<Serializable> generate(int fromNumber, int toNumber);
 }

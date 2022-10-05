@@ -8,7 +8,12 @@ import java.util.stream.IntStream;
 public class StreamingFizzBuzzSequenceGenerator implements FizzBuzzSequenceGenerator {
     @Override
     public List<Serializable> generate(int length) {
-        return IntStream.rangeClosed(1, length)
+        return generate(1, length);
+    }
+
+    @Override
+    public List<Serializable> generate(int fromNumber, int toNumber) {
+        return IntStream.rangeClosed(fromNumber, toNumber)
                 .mapToObj(this::getFizzBuzzOrNumber)
                 .collect(Collectors.toUnmodifiableList());
     }

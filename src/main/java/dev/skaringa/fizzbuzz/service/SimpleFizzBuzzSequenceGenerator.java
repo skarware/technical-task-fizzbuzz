@@ -7,9 +7,14 @@ import java.util.List;
 public class SimpleFizzBuzzSequenceGenerator implements FizzBuzzSequenceGenerator {
     @Override
     public List<Serializable> generate(int length) {
-        List<Serializable> sequence = new ArrayList<>(length);
+        return generate(1, length);
+    }
 
-        for (int number = 1; number <= length; number++) {
+    @Override
+    public List<Serializable> generate(int fromNumber, int toNumber) {
+        List<Serializable> sequence = new ArrayList<>(toNumber);
+
+        for (int number = fromNumber; number <= toNumber; number++) {
             String word = FizzBuzzWordResolver.resolve(number);
             appendOneOf(sequence, number, word);
         }
